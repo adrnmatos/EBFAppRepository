@@ -11,17 +11,22 @@ public class Client {
 		if(planList.isEmpty())
 			return false;
 		else {
-			for(Plan p : planList) {
-				if(p.isActive())
-					return true;
-			}
+			if(getActivePlan() != null)
+				return true;
 			return false;
 		}
 	}
 
 	public void assignPlan(Plan p) {
-		this.planList.add(p);
-		
+		this.planList.add(p);		
+	}
+
+	public Plan getActivePlan() {
+		for(Plan p : planList) {
+			if(p.isActive())
+				return p;
+		}
+		return null;
 	}
 
 }

@@ -39,7 +39,7 @@ public class Cliente implements Serializable {
 	private int telefone2;
 	
 	public Cliente() {
-		
+		this.endereco = new Endereco();
 	}
 
 	public Long getId() {

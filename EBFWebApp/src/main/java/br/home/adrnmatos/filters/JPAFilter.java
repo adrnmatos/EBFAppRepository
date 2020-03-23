@@ -32,7 +32,7 @@ public class JPAFilter implements Filter {
 		
 		request.setAttribute("entityManager", entityManager);
 		
-		entityManager.getTransaction().getClass();
+		entityManager.getTransaction().begin();
 		
 		chain.doFilter(request, response);
 		

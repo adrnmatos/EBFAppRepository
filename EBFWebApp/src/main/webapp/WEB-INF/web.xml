@@ -4,6 +4,15 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     
+	<welcome-file-list>
+		<welcome-file>index.xhtml</welcome-file>
+	</welcome-file-list>
+  
+	<context-param>
+		<param-name>facelets.SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+    
     <servlet>
         <servlet-name>JSF</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -14,5 +23,13 @@
         <servlet-name>JSF</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+
+	<listener>
+		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+	</listener>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 
 </web-app>

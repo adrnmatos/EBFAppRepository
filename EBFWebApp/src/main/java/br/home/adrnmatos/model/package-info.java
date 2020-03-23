@@ -12,5 +12,10 @@
 			)
 	})
 
+@org.hibernate.annotations.NamedQueries({
+	 
+	@org.hibernate.annotations.NamedQuery(name = "Cliente.findAll",query= "SELECT c FROM Cliente c")
+ 
+})
 
 package br.home.adrnmatos.model;

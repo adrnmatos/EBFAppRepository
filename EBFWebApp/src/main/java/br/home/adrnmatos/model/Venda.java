@@ -10,7 +10,6 @@ import javax.persistence.Id;
 public class Venda {
 	
 	@Id
-	@GeneratedValue(generator = "ID_GENERATOR")
 	private Long id;
 	
 	private Long clienteId;

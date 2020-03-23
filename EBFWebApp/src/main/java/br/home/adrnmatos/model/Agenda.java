@@ -8,7 +8,6 @@ import javax.persistence.Id;
 public class Agenda {
 	
 	@Id
-	@GeneratedValue(generator = "ID_GENERATOR")
 	private Long id;
 	
 	private Long planoId;

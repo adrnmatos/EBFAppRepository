@@ -2,24 +2,36 @@ package br.home.adrnmatos.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Endereco implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	@Column(nullable = true)
 	private String rua;
 	
+	@Column(nullable = true)
 	private int numero;
 	
+	@Column(nullable = true)
 	private String complemento;
 	
+	@Column(nullable = true)
 	private String bairro;
 	
+	@Column(nullable = true)
 	private int cep;
 	
+	@Column(nullable = true)
 	private String cidade;
 	
+	@Column(nullable = true)
 	private String estado;
 	
+	@Column(nullable = true)
 	private String pais;
 	
 	public Endereco() {
@@ -90,9 +102,5 @@ public class Endereco implements Serializable {
 		this.pais = pais;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 
 }

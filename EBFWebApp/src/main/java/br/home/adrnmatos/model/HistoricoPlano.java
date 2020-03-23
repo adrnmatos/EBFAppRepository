@@ -10,15 +10,15 @@ import javax.persistence.Id;
 public class HistoricoPlano {
 	
 	@Id
-	@GeneratedValue(generator = "ID_GENERATOR")
 	private Long id;
 	
 	private Long planoId;
 	
 	private Float valor;
 	
-	private Agenda agenda;
-	
+	/*
+	 * private Agenda agenda;
+	 */	
 	private LocalDateTime dataCadastro;
 
 	public Long getId() {
@@ -41,14 +41,11 @@ public class HistoricoPlano {
 		this.valor = valor;
 	}
 
-	public Agenda getAgenda() {
-		return agenda;
-	}
-
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
-	}
-
+	/*
+	 * public Agenda getAgenda() { return agenda; }
+	 * 
+	 * public void setAgenda(Agenda agenda) { this.agenda = agenda; }
+	 */
 	public LocalDateTime getDataCadastro() {
 		return dataCadastro;
 	}

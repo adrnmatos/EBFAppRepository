@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 public class Usuario {
 	
 	@Id
-	@GeneratedValue(generator = "ID_GENERATOR")
 	private Long id;
 	
 	@NotNull	

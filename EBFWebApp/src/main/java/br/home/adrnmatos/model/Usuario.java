@@ -1,10 +1,13 @@
 package br.home.adrnmatos.model;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,6 +17,7 @@ import javax.validation.constraints.Size;
 public class Usuario {
 	
 	@Id
+	@GeneratedValue(generator = "ID_GENERATOR")
 	private Long id;
 	
 	@NotNull	
@@ -30,6 +34,9 @@ public class Usuario {
 	private LocalDateTime dataAdmissao;
 	
 	private LocalDateTime dataRecisao;
+	
+	@OneToMany(mappedBy = "usuario")
+	protected Set<Venda> vendas = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -73,6 +80,14 @@ public class Usuario {
 
 	public void setDataRecisao(LocalDateTime dataRecisao) {
 		this.dataRecisao = dataRecisao;
+	}
+
+	public Set<Venda> getVendas() {
+		return vendas;
+	}
+
+	public void setVendas(Set<Venda> vendas) {
+		this.vendas = vendas;
 	}
 	
 	

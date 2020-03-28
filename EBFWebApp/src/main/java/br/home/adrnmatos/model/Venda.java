@@ -1,60 +1,98 @@
 package br.home.adrnmatos.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "venda")
+@org.hibernate.annotations.Immutable
 public class Venda {
 	
-	@Id
-	private Long id;
+	@EmbeddedId
+	protected VendaId id = new VendaId();
+		
+	@Column(updatable = false)
+	@NotNull
+	protected Date addedOn = new Date();
 	
-	private Long clienteId;
+	@ManyToOne
+	@JoinColumn(
+		name = "cliente_id",
+		insertable = false, updatable = false)
+	protected Cliente cliente;
 	
-	private Long planoId;
+	@ManyToOne
+	@JoinColumn(
+		name = "plano_id",
+		insertable = false, updatable = false)
+	protected Plano plano;
 	
-	private LocalDateTime data;
-	
-	private Long valor;
+	@ManyToOne
+	@JoinColumn(
+		name = "usuario_id",
+		insertable = false, updatable = false)
+	protected Usuario usuario;
 
-	public Long getId() {
+	
+	public Venda() {		
+	}
+
+	public Venda(Cliente cliente, Plano plano, Usuario usuario) {
+		
+		this.cliente = cliente;
+		this.plano = plano;
+		this.usuario = usuario;
+		
+		this.id.clienteId = cliente.getId();
+		this.id.planoId = plano.getId();
+		
+		cliente.getVendas().add(this);
+		plano.getVendas().add(this);
+		usuario.getVendas().add(this);
+	}
+	
+	public VendaId getId() {
 		return id;
 	}
 
-	public Long getClienteId() {
-		return clienteId;
+	public Date getAddedOn() {
+		return addedOn;
 	}
 
-	public void setClienteId(Long clienteId) {
-		this.clienteId = clienteId;
+	public void setAddedOn(Date addedOn) {
+		this.addedOn = addedOn;
 	}
 
-	public Long getPlanoId() {
-		return planoId;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setPlanoId(Long planoId) {
-		this.planoId = planoId;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
-	public LocalDateTime getData() {
-		return data;
+	public Plano getPlano() {
+		return plano;
 	}
 
-	public void setData(LocalDateTime data) {
-		this.data = data;
+	public void setPlano(Plano plano) {
+		this.plano = plano;
 	}
 
-	public Long getValor() {
-		return valor;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setValor(Long valor) {
-		this.valor = valor;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-
+	
 	
 }

@@ -1,10 +1,13 @@
 package br.home.adrnmatos.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -37,6 +40,9 @@ public class Cliente implements Serializable {
 	private int telefone1;
 	
 	private int telefone2;
+	
+	@OneToMany(mappedBy = "cliente")
+	protected Set<Venda> vendas = new HashSet<>(); 
 	
 	public Cliente() {
 		this.endereco = new Endereco();
@@ -102,9 +108,13 @@ public class Cliente implements Serializable {
 		this.telefone2 = telefone2;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Set<Venda> getVendas() {
+		return vendas;
 	}
 
-	
+	public void setVendas(Set<Venda> vendas) {
+		this.vendas = vendas;
+	}
+
+
 }

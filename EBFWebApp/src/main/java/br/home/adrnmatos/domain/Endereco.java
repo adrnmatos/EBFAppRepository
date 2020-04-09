@@ -1,4 +1,4 @@
-package br.home.adrnmatos.model;
+package br.home.adrnmatos.domain;
 
 import java.io.Serializable;
 
@@ -11,28 +11,28 @@ public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(nullable = true)
-	private String rua;
+	protected String rua;
 	
 	@Column(nullable = true)
-	private int numero;
+	protected int numero;
 	
 	@Column(nullable = true)
-	private String complemento;
+	protected String complemento;
 	
 	@Column(nullable = true)
-	private String bairro;
+	protected String bairro;
 	
 	@Column(nullable = true)
-	private int cep;
+	protected int cep;
 	
 	@Column(nullable = true)
-	private String cidade;
+	protected String cidade;
 	
 	@Column(nullable = true)
-	private String estado;
+	protected String estado;
 	
 	@Column(nullable = true)
-	private String pais;
+	protected String pais;
 	
 	public Endereco() {
 		

@@ -2,7 +2,7 @@ package br.home.adrnmatos.persistence;
 
 import java.util.List;
 
-import br.home.adrnmatos.model.Cliente;
+import br.home.adrnmatos.domain.Cliente;
 
 public interface ClienteDAO {
 	

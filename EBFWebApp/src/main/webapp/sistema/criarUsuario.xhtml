@@ -1,0 +1,121 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://xmlns.primefaces.org/ui"
+	template="../template/LayoutBase.xhtml">
+
+	<ui:define name="content">
+	    
+	    		<p:tabView style="width:600px;height:370px;margin:auto;">
+		
+			<p:tab title="Cadastro de Usuario">
+
+				<h:form id="form-cadastro">
+
+					<h:panelGrid id="panelGrid-campos-form" columns="2" cellpadding="10">
+
+						<p:outputLabel value="Nome" for="inputText-nome" />
+						<p:inputText id="inputText-nome" style="width:300px"
+							maxlength="70"
+							value="#{usuarioController.usuario.nome}"
+							required="true"
+							requiredMessage="O nome é de preenchimento obrigatório" />
+
+						<p:outputLabel value="Cargo" for="inputText-cargo" />
+						<p:inputText id="inputText-cargo" style="width:300px"
+							maxlength="70"
+							value="#{usuarioController.usuario.cargo}"
+							required="true"
+							requiredMessage="O nome é de preenchimento obrigatório" />
+
+						<p:outputLabel value="Data de Admissao" for="inputText-dataAdmissao" />
+						<p:inputText id="inputText-dataAdmissao" style="width:300px"
+							maxlength="70"
+							value="#{usuarioController.usuario.dataAdmissao}"
+							required="false"/>
+							
+						<p:outputLabel value="Data de Recisao" for="inputText-dataRecisao" />
+						<p:inputText id="inputText-dataRecisao" style="width:300px"
+							maxlength="70"
+							value="#{usuarioController.usuario.dataRecisao}"
+							required="false" />
+
+						<p:outputLabel value="Rua" for="inputText-endereco-rua" />
+						<p:inputText id="inputText-endereco-rua" style="width:400px"
+							maxlength="200"
+							value="#{usuarioController.usuario.endereco.rua}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+
+						<p:outputLabel value="Numero" for="inputText-endereco-numero" />
+						<p:inputText id="inputText-endereco-numero" style="width:400px"
+							maxlength="200"
+							value="#{usuarioController.usuario.endereco.numero}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+							
+						<p:outputLabel value="Complemento" for="inputText-endereco-complemento" />
+						<p:inputText id="inputText-endereco-complemento" style="width:400px"
+							maxlength="200"
+							value="#{usuarioController.usuario.endereco.complemento}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+						
+						<p:outputLabel value="Bairro" for="inputText-endereco-bairro" />
+						<p:inputText id="inputText-endereco-bairro" style="width:400px"
+							maxlength="200"
+							value="#{usuarioController.usuario.endereco.bairro}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+						
+						<p:outputLabel value="CEP" for="inputText-endereco-cep" />
+						<p:inputText id="inputText-endereco-cep" style="width:400px"
+							maxlength="200"
+							value="#{usuarioController.usuario.endereco.cep}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+						
+						<p:outputLabel value="Cidade" for="inputText-endereco-cidade" />
+						<p:inputText id="inputText-endereco-cidade" style="width:400px"
+							maxlength="200"
+							value="#{usuarioController.usuario.endereco.cidade}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+						
+						<p:outputLabel value="Estado" for="inputText-endereco-estado" />
+						<p:inputText id="inputText-endereco-estado" style="width:400px"
+							maxlength="200"
+							value="#{usuarioController.usuario.endereco.estado}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+
+						<p:outputLabel value="Pais" for="inputText-endereco-pais" />
+						<p:inputText id="inputText-endereco-pais" style="width:400px"
+							maxlength="200"
+							value="#{usuarioController.usuario.endereco.pais}"
+							required="true"
+							requiredMessage="O endereço é de preenchimento obrigatório" />
+
+						<p:commandButton value="Salvar" id="commandButton-salvar"
+							icon="ui-icon-gear"
+							actionListener="#{usuarioController.salvarUsuario()}"
+							update="panelGrid-campos-form" />
+
+					</h:panelGrid>
+
+					<p:messages showDetail="true" autoUpdate="true" closable="true"
+						severity="warn" />
+					<p:messages autoUpdate="true" closable="true" severity="error" />
+					<p:messages showDetail="true" autoUpdate="true" closable="true"
+						severity="info" />
+
+				</h:form>
+
+			</p:tab>
+
+		</p:tabView>
+	  
+	</ui:define>
+
+</ui:composition>

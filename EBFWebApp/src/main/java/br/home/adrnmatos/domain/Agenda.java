@@ -1,4 +1,4 @@
-package br.home.adrnmatos.model;
+package br.home.adrnmatos.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +8,9 @@ import javax.persistence.Id;
 public class Agenda {
 	
 	@Id
-	private Long id;
+	protected Long id;
 	
-	private Long planoId;
+	protected Long planoId;
 
 	public Long getId() {
 		return id;

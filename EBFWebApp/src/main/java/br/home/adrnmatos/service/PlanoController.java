@@ -1,4 +1,4 @@
-package br.home.adrnmatos.business;
+package br.home.adrnmatos.service;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.home.adrnmatos.model.Plano;
+import br.home.adrnmatos.domain.Plano;
 import br.home.adrnmatos.persistence.PlanoDAO;
 
 @Named(value = "planoController")

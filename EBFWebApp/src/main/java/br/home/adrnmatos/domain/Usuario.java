@@ -1,6 +1,6 @@
-package br.home.adrnmatos.model;
+package br.home.adrnmatos.domain;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,26 +18,34 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(generator = "ID_GENERATOR")
-	private Long id;
+	protected Long id;
 	
 	@NotNull	
 	@Size(
 			min=2,
 			max=255,
 			message="Name is required, maximum 255 characters.")
-	private String nome;
+	protected String nome;
 	
-	private Endereco endereco;
+	protected Endereco endereco;
 	
-	private Cargo cargo;
+	protected Cargo cargo;
 	
-	private LocalDateTime dataAdmissao;
+	protected LocalDate dataAdmissao;
 	
-	private LocalDateTime dataRecisao;
+	protected LocalDate dataRecisao;
+	
+	protected String login;
+	
+	protected String senha;
 	
 	@OneToMany(mappedBy = "usuario")
 	protected Set<Venda> vendas = new HashSet<>();
 
+	public Usuario() {
+		this.endereco = new Endereco();
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -66,19 +74,19 @@ public class Usuario {
 		this.cargo = cargo;
 	}
 
-	public LocalDateTime getDataAdmissao() {
+	public LocalDate getDataAdmissao() {
 		return dataAdmissao;
 	}
 
-	public void setDataAdmissao(LocalDateTime dataAdmissao) {
+	public void setDataAdmissao(LocalDate dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
 	}
 
-	public LocalDateTime getDataRecisao() {
+	public LocalDate getDataRecisao() {
 		return dataRecisao;
 	}
 
-	public void setDataRecisao(LocalDateTime dataRecisao) {
+	public void setDataRecisao(LocalDate dataRecisao) {
 		this.dataRecisao = dataRecisao;
 	}
 
@@ -89,6 +97,21 @@ public class Usuario {
 	public void setVendas(Set<Venda> vendas) {
 		this.vendas = vendas;
 	}
-	
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 	
 }

@@ -1,4 +1,4 @@
-package br.home.adrnmatos.model;
+package br.home.adrnmatos.domain;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -20,26 +20,26 @@ public class Cliente implements Serializable {
 	
 	@Id
 	@GeneratedValue(generator = "ID_GENERATOR")
-	private Long id;
+	protected Long id;
 
 	@NotNull
 	@Size(
 			min=2,
 			max=255,
 			message="Name is required, maximum 255 characters.")
-	private String nome;
+	protected String nome;
 	
-	private int identidade;
+	protected int identidade;
 	
-	private int cpf;
+	protected int cpf;
 	
-	private Endereco endereco;
+	protected Endereco endereco;
 	
-	private String email;
+	protected String email;
 	
-	private int telefone1;
+	protected int telefone1;
 	
-	private int telefone2;
+	protected int telefone2;
 	
 	@OneToMany(mappedBy = "cliente")
 	protected Set<Venda> vendas = new HashSet<>(); 

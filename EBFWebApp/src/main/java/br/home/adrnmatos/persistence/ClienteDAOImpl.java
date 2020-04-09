@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.home.adrnmatos.model.Cliente;
+import br.home.adrnmatos.domain.Cliente;
 import br.home.adrnmatos.uteis.Uteis;
 
 public class ClienteDAOImpl implements ClienteDAO {

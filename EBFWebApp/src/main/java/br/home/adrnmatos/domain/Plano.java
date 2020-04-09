@@ -1,4 +1,4 @@
-package br.home.adrnmatos.model;
+package br.home.adrnmatos.domain;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,11 +13,11 @@ public class Plano {
 	
 	@Id
 	@GeneratedValue(generator = "ID_GENERATOR")
-	private Long id;
+	protected Long id;
 	
-	private String nome;
+	protected String nome;
 	
-	private Long calendarioId;
+	protected Long calendarioId;
 	
 	@OneToMany(mappedBy = "plano")
 	protected Set<Venda> vendas = new HashSet<>();

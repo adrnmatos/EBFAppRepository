@@ -1,4 +1,4 @@
-package br.home.adrnmatos.business;
+package br.home.adrnmatos.service;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -11,7 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.home.adrnmatos.model.Cliente;
+import br.home.adrnmatos.domain.Cliente;
 import br.home.adrnmatos.persistence.ClienteDAO;
 
 @Named(value = "clienteController")

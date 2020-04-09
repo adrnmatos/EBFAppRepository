@@ -1,4 +1,4 @@
-package br.home.adrnmatos.model;
+package br.home.adrnmatos.domain;
 
 import java.time.LocalDateTime;
 

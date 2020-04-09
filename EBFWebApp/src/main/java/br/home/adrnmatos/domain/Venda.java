@@ -1,6 +1,6 @@
-package br.home.adrnmatos.model;
+package br.home.adrnmatos.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -20,7 +20,7 @@ public class Venda {
 		
 	@Column(updatable = false)
 	@NotNull
-	protected Date addedOn = new Date();
+	protected LocalDateTime addedOn;
 	
 	@ManyToOne
 	@JoinColumn(
@@ -62,11 +62,11 @@ public class Venda {
 		return id;
 	}
 
-	public Date getAddedOn() {
+	public LocalDateTime getAddedOn() {
 		return addedOn;
 	}
 
-	public void setAddedOn(Date addedOn) {
+	public void setAddedOn(LocalDateTime addedOn) {
 		this.addedOn = addedOn;
 	}
 

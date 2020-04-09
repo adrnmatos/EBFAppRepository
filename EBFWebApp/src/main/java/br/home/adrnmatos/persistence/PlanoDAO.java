@@ -1,9 +1,13 @@
 package br.home.adrnmatos.persistence;
 
-import br.home.adrnmatos.model.Plano;
+import java.util.List;
+
+import br.home.adrnmatos.domain.Plano;
 
 public interface PlanoDAO {
 	
 	public void makePersistent(Plano plano);
+	
+	public List<Plano> getPlanos();
 
 }

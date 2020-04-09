@@ -1,8 +1,12 @@
 package br.home.adrnmatos.persistence;
 
-import javax.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.List;
 
-import br.home.adrnmatos.model.Plano;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.home.adrnmatos.domain.Plano;
 import br.home.adrnmatos.uteis.Uteis;
 
 public class PlanoDAOImpl implements PlanoDAO {
@@ -13,6 +17,21 @@ public class PlanoDAOImpl implements PlanoDAO {
 		EntityManager entityManager = Uteis.jpaEntityManager();
 		
 		entityManager.persist(plano);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Plano> getPlanos() {
+
+		List<Plano> planos = new ArrayList<Plano>();
+		
+		EntityManager entityManager = Uteis.jpaEntityManager();
+		
+		Query query = entityManager.createNamedQuery("Plano.findAll");
+		
+		planos = query.getResultList();
+		
+		return planos;
 	}
 
 }

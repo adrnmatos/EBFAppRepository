@@ -1,14 +1,10 @@
 package br.home.adrnmatos.domain;
 
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "venda")
@@ -18,10 +14,6 @@ public class Venda {
 	@EmbeddedId
 	protected VendaId id = new VendaId();
 		
-	@Column(updatable = false)
-	@NotNull
-	protected LocalDateTime addedOn;
-	
 	@ManyToOne
 	@JoinColumn(
 		name = "cliente_id",
@@ -37,7 +29,7 @@ public class Venda {
 	@ManyToOne
 	@JoinColumn(
 		name = "usuario_id",
-		insertable = false, updatable = false)
+		insertable = true, updatable = false)
 	protected Usuario usuario;
 
 	
@@ -60,14 +52,6 @@ public class Venda {
 	
 	public VendaId getId() {
 		return id;
-	}
-
-	public LocalDateTime getAddedOn() {
-		return addedOn;
-	}
-
-	public void setAddedOn(LocalDateTime addedOn) {
-		this.addedOn = addedOn;
 	}
 
 	public Cliente getCliente() {

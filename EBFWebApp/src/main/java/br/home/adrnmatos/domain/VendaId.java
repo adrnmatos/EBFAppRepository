@@ -21,16 +21,10 @@ public class VendaId implements Serializable {
 	@Column(name = "plano_id")
 	protected Long planoId;
 	
-	@Column(name = "data_hora")
-	protected LocalDateTime dataHora = LocalDateTime.now();
+	@Column(name = "addedOn")
+	protected LocalDateTime addedOn = LocalDateTime.now();
 	
 	public VendaId() {
-	}
-	
-	public VendaId(Long clienteId, Long planoId) {
-		this.clienteId = clienteId;
-		this.planoId = planoId;
-		this.dataHora = LocalDateTime.now();
 	}
 	
 	public boolean equals(Object obj) {
@@ -39,13 +33,14 @@ public class VendaId implements Serializable {
 			VendaId that = (VendaId)obj;
 			return this.clienteId.equals(that.clienteId)
 					&& this.planoId.equals(that.planoId)
-					&& this.dataHora.equals(that.dataHora);
+					&& this.addedOn.equals(that.addedOn);
 		}
 		return false;
 	}
 	
 	public int hashCode() {
-		return clienteId.hashCode() + planoId.hashCode() + dataHora.hashCode();
+		return clienteId.hashCode() + planoId.hashCode() + addedOn.hashCode();
 	}
 
+	
 }

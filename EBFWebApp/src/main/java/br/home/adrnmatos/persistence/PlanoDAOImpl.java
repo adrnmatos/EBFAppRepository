@@ -34,4 +34,16 @@ public class PlanoDAOImpl implements PlanoDAO {
 		return planos;
 	}
 
+	@Override
+	public Plano findById(Long userId) {
+
+		EntityManager entityManager = Uteis.jpaEntityManager();
+		
+		Query query = entityManager.createNamedQuery("Plano.findPlano");
+		
+		query.setParameter("id", userId);
+
+		return (Plano) query.getSingleResult();
+	}
+
 }

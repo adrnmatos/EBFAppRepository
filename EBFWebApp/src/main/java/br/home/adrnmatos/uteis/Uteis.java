@@ -18,6 +18,12 @@ public class Uteis {
 
 		return (EntityManager) request.getAttribute("entityManager");
 	}
+	
+	public static Long getUsuarioAutenticado() {
+		
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		return (Long) facesContext.getExternalContext().getSessionMap().get("usuarioAutenticado");
+	}
 
 	// MOSTRAR MENSAGEM
 	public static void Mensagem(String mensagem) {

@@ -10,6 +10,8 @@ public interface ClienteDAO {
 	
 	public List<Cliente> listaClientes();
 	
+	public Cliente findById(Long clienteId);
+	
 	public void excluirCliente(Cliente cliente);
 	
 	public void atualizarCliente(Cliente cliente);

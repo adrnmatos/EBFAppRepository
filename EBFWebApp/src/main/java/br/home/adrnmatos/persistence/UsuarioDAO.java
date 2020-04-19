@@ -7,5 +7,7 @@ public interface UsuarioDAO {
 	public void makePersistent(Usuario usuario);
 	
 	public Usuario validarUsuario(Usuario usuario);
+	
+	public Usuario findById(Long id);
 
 }

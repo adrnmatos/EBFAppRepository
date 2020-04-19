@@ -13,8 +13,11 @@ import br.home.adrnmatos.domain.Cliente;
 import br.home.adrnmatos.domain.Plano;
 import br.home.adrnmatos.domain.Usuario;
 import br.home.adrnmatos.domain.Venda;
+import br.home.adrnmatos.persistence.ClienteDAO;
 import br.home.adrnmatos.persistence.PlanoDAO;
+import br.home.adrnmatos.persistence.UsuarioDAO;
 import br.home.adrnmatos.persistence.VendaDAO;
+import br.home.adrnmatos.uteis.Uteis;
 
 @Named(value = "vendaController")
 @RequestScoped
@@ -26,21 +29,16 @@ public class VendaController {
 	@Inject
 	PlanoDAO planoDAO;
 	
+	@Inject
+	UsuarioDAO usuarioDAO;
+	
+	@Inject
+	ClienteDAO clienteDAO;
+	
 	protected Cliente cliente;
 	
-	protected Plano plano;
-	protected Map<String,String> planos = new HashMap<String, String>();
-	protected String planoNome; 
-	
-	public String getPlanoNome() {
-		return planoNome;
-	}
-
-	public void setPlanoNome(String planoNome) {
-		this.planoNome = planoNome;
-	}
-
-	protected Usuario usuario;
+	protected Long planoId;
+	protected Map<String,Long> planos = new HashMap<String, Long>();
 	
 	public Cliente getCliente() {
 		return cliente;
@@ -50,29 +48,25 @@ public class VendaController {
 		this.cliente = cliente;
 	}
 
-	public Plano getPlano() {
-		return plano;
+	public Long getPlanoId() {
+		return planoId;
 	}
 
-	public void setPlano(Plano plano) {
-		this.plano = plano;
+	public void setPlanoId(Long planoId) {
+		this.planoId = planoId;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Map<String, String> getPlanos() {
+	public Map<String, Long> getPlanos() {
 		return planos;
 	}
 
 	public void salvarVenda() {
 		
-		System.out.println(planoNome);
+		Cliente cliente = clienteDAO.findById(2L);
+		
+		Plano plano = planoDAO.findById(planoId);
+		
+		Usuario usuario = usuarioDAO.findById(Uteis.getUsuarioAutenticado());
 		
 		Venda venda = new Venda(cliente, plano, usuario);
 		
@@ -85,7 +79,7 @@ public class VendaController {
 		List<Plano> planosLista = planoDAO.getPlanos();
 		
 		for (Plano plano : planosLista) {
-			planos.put(plano.getNome(), plano.getNome());
+			planos.put(plano.getNome(), plano.getId());
 		}	
 	}
 

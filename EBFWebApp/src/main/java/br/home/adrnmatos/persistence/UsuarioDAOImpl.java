@@ -35,4 +35,16 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return null;
 	}
 
+	@Override
+	public Usuario findById(Long userId) {
+		
+		EntityManager entityManager = Uteis.jpaEntityManager();
+		
+		Query query = entityManager.createNamedQuery("Usuario.findUsuario");
+		
+		query.setParameter("id", userId);
+		
+		return (Usuario) query.getSingleResult();
+	}
+
 }

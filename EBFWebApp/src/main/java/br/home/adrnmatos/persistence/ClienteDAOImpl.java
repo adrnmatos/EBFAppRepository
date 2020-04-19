@@ -11,6 +11,7 @@ import br.home.adrnmatos.uteis.Uteis;
 
 public class ClienteDAOImpl implements ClienteDAO {
 	
+	@Override
 	public void makePersistent(Cliente cliente) {
 		
 		EntityManager entityManager = Uteis.jpaEntityManager();
@@ -20,6 +21,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Cliente> listaClientes() {
 		
 		EntityManager entityManager = Uteis.jpaEntityManager();
@@ -33,6 +35,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 		return listaClientes;
 	}
 	
+	@Override
 	public void excluirCliente(Cliente cliente) {
 		
 		EntityManager entityManager = Uteis.jpaEntityManager();
@@ -40,11 +43,24 @@ public class ClienteDAOImpl implements ClienteDAO {
 		entityManager.remove(cliente);
 	}
 	
+	@Override
 	public void atualizarCliente(Cliente cliente) {
 		
 		EntityManager entityManager = Uteis.jpaEntityManager();
 		
 		entityManager.merge(cliente);
+	}
+
+	@Override
+	public Cliente findById(Long clienteId) {
+		
+		EntityManager entityManager = Uteis.jpaEntityManager();
+		
+		Query query = entityManager.createNamedQuery("Cliente.findCliente");
+		
+		query.setParameter("id", clienteId);
+
+		return (Cliente) query.getSingleResult();
 	}
 
 }

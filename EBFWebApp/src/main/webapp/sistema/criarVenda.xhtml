@@ -12,7 +12,7 @@
 			<h:panelGrid id="panelGrid-campos-form" columns="2" cellpadding="10">
 
 				<p:outputLabel for="@next" value="Plano: " />
-			    <p:selectOneMenu id="planoX" value="#{vendaController.planoNome}" effect="fold" editable="true">
+			    <p:selectOneMenu id="planoX" value="#{vendaController.planoId}" effect="fold" editable="true">
 			    	<f:selectItem itemLabel="Select One" itemValue="" />
 			        <f:selectItems value="#{vendaController.planos}" />
 		        </p:selectOneMenu>

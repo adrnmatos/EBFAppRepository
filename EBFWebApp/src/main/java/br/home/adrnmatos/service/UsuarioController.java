@@ -51,11 +51,9 @@ public class UsuarioController implements Serializable {
 			Usuario user = usuarioDAO.validarUsuario(usuario);
 
 			if(user != null) {
-
-				user.setSenha(null);
 				
 				FacesContext facesContext = FacesContext.getCurrentInstance();
-				facesContext.getExternalContext().getSessionMap().put("usuarioAutenticado", user);
+				facesContext.getExternalContext().getSessionMap().put("usuarioAutenticado", user.getId());
 
 				return "sistema/home?faces-redirect=true";
 
@@ -67,9 +65,17 @@ public class UsuarioController implements Serializable {
 		}
  
 	}
+	
+	public String Logout() {
+
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/index.xhtml?faces-redirect=true";
+	}
 
 	public void salvarUsuario() {
-		
+
 		usuarioDAO.makePersistent(usuario);
 	}
+
+
 }

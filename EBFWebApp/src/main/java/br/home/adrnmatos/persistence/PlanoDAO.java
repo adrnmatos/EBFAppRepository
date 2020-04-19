@@ -9,5 +9,7 @@ public interface PlanoDAO {
 	public void makePersistent(Plano plano);
 	
 	public List<Plano> getPlanos();
+	
+	public Plano findById(Long id);
 
 }
